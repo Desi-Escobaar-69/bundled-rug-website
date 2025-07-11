@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bundled Rug - Rugpaper | Red Flag Manifesto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0b0f;
+            color: #ffffff;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1f2937 0%, #000 50%, #7f1d1d 100%);
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(239, 68, 68, 0.1) 0%, transparent 50%, rgba(239, 68, 68, 0.1) 100%);
+            animation: pulse 4s infinite;
+        }
+
+        .header .container {
+            position: relative;
+            z-index: 10;
+        }
+
+        .rugpaper-title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            margin-bottom: 1rem;
+            color: #e63946;
+            text-shadow: 0 0 20px rgba(230, 57, 70, 0.3);
+        }
+
+        .rugpaper-subtitle {
+            font-size: 1.5rem;
+            color: #f87171;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .back-to-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 2px solid #e63946;
+            color: white;
+            text-decoration: none;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .back-to-main:hover {
+            background-color: #e63946;
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.25);
+        }
+
+        /* Main Content */
+        .main-content {
+            background-color: #000;
+            padding: 4rem 0;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background-color: #1f2937;
+            border-radius: 1rem;
+            border: 1px solid #374151;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(45deg, #e63946, #f87171);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #e63946;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-emoji {
+            font-size: 2.5rem;
+            filter: drop-shadow(0 0 10px rgba(230, 57, 70, 0.3));
+        }
+
+        .section-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .section-content strong {
+            color: #fbbf24;
+            font-weight: 700;
+        }
+
+        .section-content em {
+            color: #f87171;
+            font-style: italic;
+        }
+
+        /* Tokenomics List */
+        .tokenomics-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .tokenomics-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: #374151;
+            border-radius: 0.5rem;
+            border-left: 4px solid #fbbf24;
+        }
+
+        .tokenomics-list li strong {
+            color: #fbbf24;
+            min-width: 120px;
+        }
+
+        /* Red Flags List */
+        .red-flags-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .red-flags-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: rgba(239, 68, 68, 0.1);
+            border-radius: 0.5rem;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            animation: redFlagPulse 3s infinite;
+        }
+
+        .red-flags-list li:nth-child(odd) {
+            animation-delay: 0.5s;
+        }
+
+        .red-flag-emoji {
+            font-size: 1.5rem;
+            animation: wave 2s infinite;
+        }
+
+        /* Rugmap Phases */
+        .rugmap-phase {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+            border-radius: 1rem;
+            border-left: 4px solid #e63946;
+            position: relative;
+        }
+
+        .rugmap-phase h4 {
+            font-size: 1.3rem;
+            color: #e63946;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .rugmap-phase p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #d1d5db;
+        }
+
+        /* Disclaimers */
+        .disclaimer-item {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: #7f1d1d;
+            border-radius: 0.5rem;
+            border: 1px solid #991b1b;
+        }
+
+        /* TL;DR Section */
+        .tldr {
+            background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+            border: 2px solid #e63946;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tldr::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+
+        .tldr-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .tldr h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fbbf24;
+        }
+
+
+
+        /* Download Section */
+        .download-section {
+            background-color: #1f2937;
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid #374151;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            background-color: #e63946;
+            color: white;
+            text-decoration: none;
+            border-radius: 1rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin: 0 1rem;
+        }
+
+        .download-btn:hover {
+            background-color: #dc2626;
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes redFlagPulse {
+            0%, 100% { box-shadow: 0 0 5px rgba(239, 68, 68, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); }
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(10deg); }
+            75% { transform: rotate(-10deg); }
+        }
+
+
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .rugpaper-title {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+            
+            .tokenomics-list li,
+            .red-flags-list li {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .download-btn {
+                margin: 0.5rem;
+                padding: 0.75rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="rugpaper-title">🧶 RUGPAPER</h1>
+            <p class="rugpaper-subtitle">Whitepaper? Nah. This is a red flag manifesto.</p>
+            <a href="https://bundledrug.fun" class="back-to-main">
+                <i class="fas fa-arrow-left"></i>
+                Back to Main Site
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- Intro Section -->
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="section-emoji">🎭</span>
+                    INTRO
+                </h2>
+                <div class="section-content">
+                    <p><strong>BUNDLED RUG</strong> isn't just another meme coin. It's every ignored red flag — bundled beautifully into one catastrophic masterpiece.</p>
+                    <p>We're not here to promise utility, partnerships, or roadmaps. We're here to rug you with style. And you'll love every second of it.</p>
+                </div>
+            </section>
+
+            <!-- Vision Section -->
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="section-emoji">🧠</span>
+                    VISION
+                </h2>
+                <div class="section-content">
+                    <p>There is none. We're not building the future — we're <em>unbuilding</em> it. This isn't about decentralization or financial freedom. It's about FOMO, chart porn, and embracing the inevitable.</p>
+                </div>
+            </section>
+
+            <!-- Mission Section -->
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="section-emoji">🎯</span>
+                    MISSION
+                </h2>
+                <div class="section-content">
+                    <p>To push irony so far it loops back into alpha. We exist to expose the space for what it truly is: A casino run by devs on Adderall and memes. And you? You're the liquidity.</p>
+                </div>
+            </section>
+
+            <!-- Tokenomics Section -->
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="section-emoji">📊</span>
+                    TOKENOMICS
+                </h2>
+                <div class="section-content">
+                    <ul class="tokenomics-list">
+                        <li>
+                            <strong>Total Supply:</strong>
+                            <span>1,000,000,000 (1B) Because a billion makes it feel real.</span>
+                        </li>
+                        <li>
+                            <strong>Liquidity:</strong>
+                            <span>Locked (on pump.fun — good luck with that)</span>
+                        </li>
+                        <li>
+                            <strong>Team Wallets:</strong>
+                            <span>55%+ (varies based on dev's emotional state)</span>
+                        </li>
+                        <li>
+                            <strong>Marketing Budget:</strong>
+                            <span>None. Dev bought Gucci instead.</span>
+                        </li>
+                        <li>
+                            <strong>Utility:</strong>
+                            <span>To teach you a lesson you'll ignore again tomorrow.</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Red Flags Section -->
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="section-emoji">🚩</span>
+                    RED FLAGS (PROUDLY DISPLAYED)
+                </h2>
+                <div class="section-content">
+                    <ul class="red-flags-list">
+                        <li>
+                            <span class="red-flag-emoji">🚩</span>
+                            <span>50%+ held by wallets ending in 42069</span>
+                        </li>
+                        <li>
+                            <span class="red-flag-emoji">🚩</span>
+                            <span>Liquidity bundled tighter than a scammer's VPN</span>
+                        </li>
+                        <li>
+                            <span class="red-flag-emoji">🚩</span>
+                            <span>Wallets funded minutes before launch — clean AF</span>
+                        </li>
+                        <li>
+                            <span class="red-flag-emoji">🚩</span>
+                            <span>Dev is more anonymous than your burner Tinder profile</span>
+                        </li>
+                        <li>
+                            <span class="red-flag-emoji">🚩</span>
+                            <span>No Telegram. No roadmap. Just regret.</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Rugmap Section -->
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="section-emoji">🔥</span>
+                    RUGMAP
+                </h2>
+                <div class="section-content">
+                    <div class="rugmap-phase">
+                        <h4>Phase 1: The Green Dildo Dream</h4>
+                        <p>Chart prints a green dildo so hard it slaps the moon. You FOMO in. Your cousin FOMOs in. Even your dog holds a bag. Grandparents liquidate their 401k and ape into $BUNDLED RUG. Reddit calls it the future of finance. Twitter says it's the future of Binance. It's beautiful. It's bait.</p>
+                    </div>
+                    <div class="rugmap-phase">
+                        <h4>Phase 2: Max Extraction</h4>
+                        <p>Dev hits the nuke button like he's speedrunning bankruptcy. Chart does a full send — straight to hell. Liquidity gone. Holders coping. Memes flying.</p>
+                    </div>
+                    <div class="rugmap-phase">
+                        <h4>Phase 3: Yeah that's it. The End.</h4>
+                        <p>Your bags? Gone. Dev's flexin' them on a yacht with two phones and no remorse. One phone for traders, one phone for Tinder.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Disclaimers Section -->
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="section-emoji">🛑</span>
+                    DISCLAIMERS
+                </h2>
+                <div class="section-content">
+                    <div class="disclaimer-item">
+                        <p>This is not a scam.</p>
+                    </div>
+                    <div class="disclaimer-item">
+                        <p>It's <strong>open-source robbery</strong> with vibes.</p>
+                    </div>
+                    <div class="disclaimer-item">
+                        <p>No refunds. No promises. No hope.</p>
+                    </div>
+                    <div class="disclaimer-item">
+                        <p>Do not invest more than you're willing to turn into a tweet about how early you were.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TL;DR Section -->
+            <section class="tldr">
+                <div class="tldr-content">
+                    <h3>🧠 TL;DR</h3>
+                    <p><strong>$BUNDLED RUG</strong> is not a meme coin. It's a social experiment in collective delusion. We told you exactly what it is. If you still buy… you deserve the experience.</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Download Section -->
+    <section class="download-section">
+        <div class="container">
+            <h3 style="margin-bottom: 2rem; color: #e63946;">DOWNLOAD RUGPAPER</h3>
+            <a href="#" onclick="downloadPDF()" class="download-btn">
+                <i class="fas fa-file-pdf"></i>
+                Download PDF
+            </a>
+            <a href="#" onclick="shareLink()" class="download-btn">
+                <i class="fas fa-share-alt"></i>
+                Share Link
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            // Only process links that have a valid hash target
+            if (anchor.getAttribute('href') !== '#') {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+        });
+
+        // Download PDF functionality
+        function downloadPDF() {
+            // You can replace this URL with your actual PDF file URL when you create it
+            alert('PDF download coming soon! For now, you can print this page or save as PDF using your browser.');
+            // Future implementation:
+            // window.open('https://bundledrug.fun/rugpaper/bundled-rug-rugpaper.pdf', '_blank');
+        }
+
+        // Share link functionality
+        function shareLink() {
+            const url = window.location.href;
+            if (navigator.share) {
+                // Use native sharing on mobile devices
+                navigator.share({
+                    title: 'Bundled Rug - Rugpaper',
+                    text: 'Check out this red flag manifesto!',
+                    url: url
+                });
+            } else {
+                // Fallback to clipboard copy
+                navigator.clipboard.writeText(url).then(() => {
+                    const btn = event.target.closest('.download-btn');
+                    const originalHTML = btn.innerHTML;
+                    btn.innerHTML = '<i class="fas fa-check"></i> Link Copied!';
+                    setTimeout(() => {
+                        btn.innerHTML = originalHTML;
+                    }, 2000);
+                }).catch(() => {
+                    // Fallback if clipboard fails
+                    prompt('Copy this link:', url);
+                });
+            }
+        }
+
+        // Share link functionality - updated to avoid the error
+        document.addEventListener('DOMContentLoaded', function() {
+            const shareButton = document.querySelector('.download-btn:last-child');
+            if (shareButton) {
+                shareButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    shareLink();
+                });
+            }
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
